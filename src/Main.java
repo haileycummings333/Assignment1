@@ -1,7 +1,7 @@
 public class Main {
     public static void main(String[] args) {
-        String text1 = "abc";
-        String text2 = "def";
+        String text1 = "abce";
+        String text2 = "ace";
         //expected output would be "ace"
 
         //print the input
@@ -21,40 +21,37 @@ public class Main {
 
     public static String longestCommonSubsequence(String text1, String text2) {
         //store strings as char arrays to iterate through
-        char[] str1 = text1.toCharArray();
-        char[] str2 = text2.toCharArray();
+        char[] str1 = text1.toCharArray(); //O(1), S(N)
+        char[] str2 = text2.toCharArray(); //O(1), S(N)
 
         //get length of total string
-        int m = str1.length;
-        int n = str2.length;
+        int m = str1.length; //O(1), S(N)
+        int n = str2.length; //O(1), S(N)
 
+        //base string for the common subsequence
+        String commonSubsequence = ""; //O(1), S(1)
 
-        String commonSubsequence = "";
+        //for iterating through the arrays
+        int i = 0; //O(1), S(1)
+        int j = 0; //O(1), S(1)
 
-        int i = 0;
-        int j = 0;
-        //for loop to iterate through the char arrays and
-        //compare for matching letters
-
-        //for each char in the str1 array, compare
-        for (char currentChar : str1) {
-            //no match & within bounds of the string
-            while (i < n && str1[i] != currentChar) {
-                //go to next index
-                i++;
+        //stay within bounds of arrays
+        while (i < m && j < n) { //O(N) in total
+            // if characters match, add to commonSubsequence
+            if (str1[i] == str2[j]) { //O(N)
+                commonSubsequence += str1[i]; //O(1)
+                i++; //O(1)
             }
-
-            // i<n makes sure not to go out of bounds
-            if (i < n) {
-                //add the currentChar to the commonSubseqeunce
-                commonSubsequence += currentChar;
-                //go to next index
-                i++;
-            }
+            j++; //O(1)
         }
+
+
         //return the common subsequence, it there is none it will return empty string
         return commonSubsequence;
 
     }
+
+    //Time Complexity is O(N)
+    //Space Complexity is S(N)
 
 }
