@@ -1,4 +1,4 @@
-public class Main {
+public class CommonSubsequence {
     public static void main(String[] args) {
         String text1 = "abce";
         String text2 = "ace";
@@ -36,9 +36,9 @@ public class Main {
         int j = 0; //O(1), S(1)
 
         //stay within bounds of arrays
-        while (i < m && j < n) { //O(N) in total
+        while (i < m && j < n) { //O(N)
             // if characters match, add to commonSubsequence
-            if (str1[i] == str2[j]) { //O(N)
+            if (str1[i] == str2[j]) { //O(1)
                 commonSubsequence += str1[i]; //O(1)
                 i++; //O(1)
             }
