@@ -12,12 +12,12 @@ public class CommonSubsequence2 {
         int n = str2.length;
 
         //create 2d array for dynamic programming, to store the length of sub arrays
-        int[][] dpArray = new int[m + 1][n + 1];
+        int[][] dpArray = new int[m + 1][n + 1]; //space complexity S(N^2) if N is arbitarily the length of both strings
 
         //fill the dynamic programming array
 
         //iterate through the first array
-        for (int i = 1; i <= m; i++) {
+        for (int i = 1; i <= m; i++) { //O(N)*O(N) = O(N^2)
 
             //iterate through the second array
             for (int j = 1; j <= n; j++) {
