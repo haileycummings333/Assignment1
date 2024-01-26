@@ -1,0 +1,58 @@
+public class CommonSubsequence2 {
+    //my original code didn't quite work so i watched a few youtube videos explaining dynamic programmings.
+    //i linked the videos in the pdf with my answers to the text responses
+
+    public static int longestCommonSubsequence(String text1, String text2) {
+        //convert string to char arrays
+        char[] str1 = text1.toCharArray();
+        char[] str2 = text2.toCharArray();
+
+        //get the lengths
+        int m = str1.length;
+        int n = str2.length;
+
+        //create 2d array for dynamic programming, to store the length of sub arrays
+        int[][] dpArray = new int[m + 1][n + 1];
+
+        //fill the dynamic programming array
+
+        //iterate through the first array
+        for (int i = 0; i < m; i++) {
+
+            //iterate through the second array
+            for (int j = 0; j < n; j++) {
+
+                if (str1[i] == str2[j]) {
+                    //plus one because found a match between the two strings
+                    //so length of current subsequence increases by 1
+                    dpArray[i+1][j+1] = dpArray[i][j] + 1;
+                } else {
+                    //store the max length at current position, so once we get to the end
+                    //it should have the value of the longest subsequence
+                    dpArray[i][j] = Math.max(dpArray[i - 1][j], dpArray[i][j - 1]);
+                }
+            }
+        }
+
+        //return the length of the longest subsequence
+        return dpArray[m][n];
+    }
+
+    public static void main(String[] args) {
+        //test values from assignment handout
+        String text1 = "abc";
+        String text2 = "abc";
+        System.out.println("Input: text1: " + text1 + ", " +  "text2: " + text2);
+        System.out.println("Output: " + longestCommonSubsequence(text1, text2));
+
+        text1 = "almanacs";
+        text2 = "albatross";
+        System.out.println("Input: text1: " + text1 + ", " +  "text2: " + text2);
+        System.out.println("Output: " + longestCommonSubsequence(text1, text2));
+
+        text1 = "almanac";
+        text2 = "ferris";
+        System.out.println("Input: text1: " + text1 + ", " +  "text2: " + text2);
+        System.out.println("Output: " + longestCommonSubsequence(text1, text2));
+    }
+}
