@@ -20,16 +20,16 @@ public class CommonSubsequence2 {
         for (int i = 1; i <= m; i++) { //O(N)*O(N) = O(N^2)
 
             //iterate through the second array
-            for (int j = 1; j <= n; j++) {
+            for (int j = 1; j <= n; j++) { //O(N)
 
-                if (str1[i-1] == str2[j-1]) {
+                if (str1[i-1] == str2[j-1]) { //O(1)
                     //plus one because found a match between the two strings
                     //so length of current subsequence increases by 1
-                    dpArray[i][j] = dpArray[i-1][j-1] + 1;
+                    dpArray[i][j] = dpArray[i-1][j-1] + 1; //O(1)
                 } else {
                     //store the max length at current position, so once we get to the end
                     //it should have the value of the longest subsequence
-                    dpArray[i][j] = Math.max(dpArray[i - 1][j], dpArray[i][j - 1]);
+                    dpArray[i][j] = Math.max(dpArray[i - 1][j], dpArray[i][j - 1]); //O(1)
                 }
             }
         }

@@ -13,12 +13,12 @@ public class NotFibonacci {
 
     private static void generateNotFibonacci(int numTerms) {
         //intialize the first two terms in the sequence
-        BigInteger term1 = BigInteger.ZERO;
-        BigInteger term2 = BigInteger.ONE;
+        BigInteger term1 = BigInteger.ZERO; //O(1)
+        BigInteger term2 = BigInteger.ONE; //O(1)
 
         System.out.println("NotFibonacci Sequence for first " + numTerms + " terms: ");
 
-        for (int i = 0; i < numTerms; i++) {
+        for (int i = 0; i < numTerms; i++) { //O(N)
             //print out each terms
             System.out.print(term1 + " ");
 
@@ -28,15 +28,15 @@ public class NotFibonacci {
             //equation on the document doesn't match what the text says
 
             //this is for the described formula
-            BigInteger nextTerm = term1.add(term2.multiply(BigInteger.valueOf(2)));
+            BigInteger nextTerm = term1.add(term2.multiply(BigInteger.valueOf(2))); //O(1)
 
 
             //this is for the shown formula in the document
-            BigInteger nextTermSecondEq = (term1.multiply(BigInteger.TWO)).add(term2.multiply(BigInteger.valueOf(3)));
+            BigInteger nextTermSecondEq = (term1.multiply(BigInteger.TWO)).add(term2.multiply(BigInteger.valueOf(3))); //O(1)
 
             //update terms for the next calulation
-            term1 = term2;
-            term2 = nextTermSecondEq;
+            term1 = term2; //O(1)
+            term2 = nextTermSecondEq; //O(1)
         }
     }
 }
