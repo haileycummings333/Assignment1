@@ -17,15 +17,15 @@ public class CommonSubsequence2 {
         //fill the dynamic programming array
 
         //iterate through the first array
-        for (int i = 0; i < m; i++) {
+        for (int i = 1; i <= m; i++) {
 
             //iterate through the second array
-            for (int j = 0; j < n; j++) {
+            for (int j = 1; j <= n; j++) {
 
-                if (str1[i] == str2[j]) {
+                if (str1[i-1] == str2[j-1]) {
                     //plus one because found a match between the two strings
                     //so length of current subsequence increases by 1
-                    dpArray[i+1][j+1] = dpArray[i][j] + 1;
+                    dpArray[i][j] = dpArray[i-1][j-1] + 1;
                 } else {
                     //store the max length at current position, so once we get to the end
                     //it should have the value of the longest subsequence
